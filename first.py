@@ -1,7 +1,7 @@
 import pygame
 from binar import *
 
-# create_coloda()  # ================================================ Делаем колоду
+create_coloda()  # ================================================ Делаем колоду
 pygame.init()
 game_work = True
 # region color
@@ -29,6 +29,8 @@ def text_in_box(text='Jopa', size=10):
 
 gg = ['mama', 'papa', 'ya', 'ponty']
 
+flag = True
+
 while game_work:
     # region выход из игры
     for event in pygame.event.get():
@@ -36,7 +38,21 @@ while game_work:
             print('Кнопка выхода нажата\nBuy it game')
             game_work = False
     # endregion
-    card.blit(text_in_box(), (0, 0))
-    window.blit(card, (col_x, col_y))
+    if flag:
+        for i in coloda:
+            b = i
+            i = pygame.Surface((60, 80))
+            i.fill(WHITE)
+            i.blit(text_in_box(b), (0, 0))
+            window.blit(i, (col_x, col_y))
+            if col_x <= 400:
+                col_x += 15
+                col_y += 15
+            else:
+                col_x += 15
+                col_y -= 15
+    flag = False
+    # card.blit(text_in_box(), (0, 0))
+    # window.blit(card, (col_x, col_y))
 
     pygame.display.flip()  # Обновить экран
