@@ -29,11 +29,6 @@ def show_hand():
         print(i, '\t', b)
 
 
-# for i in hand:
-#     for b in range(len(hand))
-#         print(b,'\t', i)
-
-
 # получить карту
 def give_card(kol_vo=1):
     kol_vo = input("сколько карт вам нужно? \nНажмите Enter для 1 карты")
@@ -54,20 +49,17 @@ def put_on_table():
     while True:
         try:
             value = input("Какие карты вы хотите положить на стол?")
-        # except ValueError:
-        #     print('Напишите числа через пробел')
-        #     continue
+
         except TypeError:
             print("Пишите числа")
             continue
         try:
             for i in value.split(" "):
                 table.append(hand[int(i) - 1])
+            for i in value.split(" "):
                 hand.remove(hand[int(i) - 1])
             break
-            # table.append(hand[value - 1])
-            # hand.remove(hand[value - 1])
-            #     break
+
         except IndexError:
             print("\t\nУ вас нет такого номера карты, попробуйте еще раз")
         except TypeError:

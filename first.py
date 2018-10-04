@@ -1,5 +1,7 @@
 import pygame
+from binar import *
 
+# create_coloda()  # ================================================ Делаем колоду
 pygame.init()
 game_work = True
 # region color
@@ -12,14 +14,20 @@ RED = (255, 0, 0)
 window = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Cards..... Jack")
 # endregion
+col_x = 10
+col_y = 0
+# Делаем карту, цвет и ее координаты
+card = pygame.Surface((60, 80))
+card.fill(WHITE)
 
-# Делаем квадрат и его координаты
-screen = pygame.Surface((40, 40))
-screen.fill(RED)
 
-myfont = pygame.font.SysFont('Comic Sans MS', 8)
-textsurface = myfont.render('jopa', False, (0, 0, 0))
+def text_in_box(text='Jopa', size=10):
+    myfont = pygame.font.SysFont('Comic Sans MS', size)
+    textsurface = myfont.render(text, False, BLACK)
+    return textsurface
 
+
+gg = ['mama', 'papa', 'ya', 'ponty']
 
 while game_work:
     # region выход из игры
@@ -28,8 +36,7 @@ while game_work:
             print('Кнопка выхода нажата\nBuy it game')
             game_work = False
     # endregion
+    card.blit(text_in_box(), (0, 0))
+    window.blit(card, (col_x, col_y))
 
-    # Надпись в квадрате
-    screen.blit(textsurface, (0, 0))
-    window.blit(screen, (40 - 10, 600 - 40 - 10))
-    pygame.display.flip()
+    pygame.display.flip()  # Обновить экран
