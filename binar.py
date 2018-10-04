@@ -53,17 +53,21 @@ def give_card(kol_vo=1):
 def put_on_table():
     while True:
         try:
-            value = int(input("Какую карты вы хотите положить на стол?"))
-        except ValueError:
-            print('Напишите число')
-            continue
+            value = input("Какие карты вы хотите положить на стол?")
+        # except ValueError:
+        #     print('Напишите числа через пробел')
+        #     continue
         except TypeError:
             print("Пишите числа")
             continue
         try:
-            table.append(hand[value - 1])
-            hand.remove(hand[value - 1])
+            for i in value.split(" "):
+                table.append(hand[int(i) - 1])
+                hand.remove(hand[int(i) - 1])
             break
+            # table.append(hand[value - 1])
+            # hand.remove(hand[value - 1])
+            #     break
         except IndexError:
             print("\t\nУ вас нет такого номера карты, попробуйте еще раз")
         except TypeError:
