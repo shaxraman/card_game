@@ -21,6 +21,8 @@ card = pygame.Surface((60, 80))
 card.fill(WHITE)
 
 ab = 400
+
+
 def text_in_box(text='Jopa', size=10):
     myfont = pygame.font.SysFont('Comic Sans MS', size)
     textsurface = myfont.render(text, False, BLACK)
