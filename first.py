@@ -2,6 +2,7 @@ import pygame, math
 from binar import *
 
 create_coloda()  # ================================================ Делаем колоду
+# create_coloda()
 pygame.init()
 game_work = True
 # region color
@@ -15,12 +16,14 @@ window = pygame.display.set_mode((1820, 900))
 pygame.display.set_caption("Cards..... Jack")
 # endregion
 col_x = 15
-col_y = 50
+col_y = 0
 # Делаем карту, цвет и ее координаты
 card = pygame.Surface((60, 80))
 card.fill(WHITE)
 
 ab = 400
+j = pygame.Surface((75, 95))
+j.fill(RED)
 
 
 def text_in_box(text='Jopa', size=10):
@@ -42,21 +45,16 @@ while game_work:
     # endregion
     if flag:
         for i in coloda:
+            pygame.time.wait(50)
             b = i
-            # i = pygame.Surface((65, 95)), pygame.Surface
-            # i.fill(RED)
             i = pygame.Surface((60, 80))
             i.fill(WHITE)
             i.blit(text_in_box(b), (0, 0))
-            window.blit(i, (col_x, col_y))
-            if col_y <= ab:
-                col_x += 24
-                col_y += 50
-                ab = 400
-            else:
-                col_x += 24
-                col_y -= 50
-                ab = 50
+            j.blit(i, (5, 5))
+            window.blit(j, (col_x, col_y))
+            col_x += 30
+            col_y = - (200 * math.cos(col_x / 300) - 200)
+            pygame.display.flip()  # Обновить экран
     flag = False
     # card.blit(text_in_box(), (0, 0))
     # window.blit(card, (col_x, col_y))
