@@ -1,6 +1,7 @@
 import pygame, math
 from binar import *
 
+
 create_coloda()  # ================================================ Делаем колоду
 # create_coloda()
 pygame.init()
