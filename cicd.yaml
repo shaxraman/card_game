@@ -1,0 +1,10 @@
+testing:
+  - type: docker
+    image: mvantellingen/python-lint:latest
+    volumes:
+      - $(pwd)/app:/code
+    workdir: /code
+    shell: |
+        flake8 --max-line-length=128
+delivery:
+  - type: docker
